@@ -20,7 +20,7 @@ export const sampleData = [
             th: 5,
             f: 5,
             sa: 5,
-            su: 5
+            su: 5,
           },
           ot: {
             m: 1,
@@ -29,7 +29,7 @@ export const sampleData = [
             th: 1,
             f: 1,
             sa: 1,
-            su: 1
+            su: 1,
           },
           dt: {
             m: 2,
@@ -38,7 +38,7 @@ export const sampleData = [
             th: 2,
             f: 2,
             sa: 2,
-            su: 2
+            su: 2,
           },
         },
         Expenses: 0,
@@ -59,7 +59,7 @@ export const sampleData = [
             th: 5,
             f: 5,
             sa: 5,
-            su: 5
+            su: 5,
           },
           ot: {
             m: 1,
@@ -68,7 +68,7 @@ export const sampleData = [
             th: 1,
             f: 1,
             sa: 1,
-            su: 1
+            su: 1,
           },
           dt: {
             m: 2,
@@ -77,7 +77,7 @@ export const sampleData = [
             th: 2,
             f: 2,
             sa: 2,
-            su: 2
+            su: 2,
           },
         },
         Expenses: 0,
