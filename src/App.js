@@ -24,6 +24,7 @@ const days = ["m", "tu", "w", "th", "f", "sa", "su"];
 
 const App = () => {
   const [addingCount, setAddingCount] = useState(1);
+  const [expandedPanel, setExpandedPanel] = useState([]);
 
   const [expandedRows, setExpandedRows] = useState([]);
   const [tableData, setTableData] = useState(sampleData);
@@ -98,6 +99,11 @@ const App = () => {
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
+  const handleExpandPanel = (isExpanded, index) => {
+    setExpandedPanel((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
 
   return (
     <div className="table-container">
@@ -106,15 +112,25 @@ const App = () => {
           <Disclosure
             id={index}
             key={index}
+            onExpandedChange={(isExpanded) =>
+              handleExpandPanel(isExpanded, index)
+            }
           >
-            <DisclosureTitle>
+            <DisclosureTitle
+              UNSAFE_style={{
+                background: expandedPanel.includes(index) ? "#F0FDFB" : "white",
+              }}
+            >
               <Flex
                 direction="row"
                 alignItems="center"
                 justifyContent="space-between"
                 UNSAFE_style={{ width: "100%" }}
               >
-                <Flex direction="column">
+                <Flex
+                  direction="column"
+                  UNSAFE_style={{ paddingLeft: "10px" }}
+                >
                   <Text
                     UNSAFE_style={{
                       fontSize: "12px",
@@ -227,60 +243,56 @@ const App = () => {
                     <th>
                       <Flex
                         direction="row"
-                        alignItems="end"
-                        justifyContent="space-between"
+                        alignItems="center"
                       >
+                        <ChevronLeft
+                          size="S"
+                          UNSAFE_style={{ fill: "#00635f", padding: 0 }}
+                        />
+                        <ChevronRight
+                          size="S"
+                          UNSAFE_style={{
+                            fill: "#00635f",
+                            marginRight: "16px",
+                            marginLeft: "7px",
+                          }}
+                        />
                         <Flex
                           direction="row"
-                          alignItems="center"
+                          alignItems="end"
+                          justifyContent="start"
                         >
-                          <ChevronLeft
-                            size="S"
-                            UNSAFE_style={{ fill: "#00635f" }}
-                          />
-                          <ChevronRight
-                            size="S"
-                            UNSAFE_style={{
-                              fill: "#00635f",
-                              marginRight: "16px",
-                              marginLeft: "7px",
-                            }}
-                          />
-                          <Flex
-                            direction="row"
-                            alignItems="end"
-                            justifyContent="start"
-                          >
-                            <Text UNSAFE_className="summary-week-name">WE</Text>
-                            <Text UNSAFE_className="summary-week-number">
-                              21st
-                            </Text>
-                          </Flex>
+                          <Text UNSAFE_className="summary-week-name">WE</Text>
+                          <Text UNSAFE_className="summary-week-number">
+                            21st
+                          </Text>
                         </Flex>
-                        <Flex
-                          direction="row"
-                          alignItems="center"
+                      </Flex>
+                    </th>
+                    <th>
+                      <Flex
+                        direction="row"
+                        alignItems="center"
+                      >
+                        <ActionButton
+                          isQuiet
+                          aria-label="left"
                         >
-                          <ActionButton
-                            isQuiet
-                            aria-label="left"
-                          >
-                            <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
-                          </ActionButton>
-                          <ActionButton
-                            isQuiet
-                            aria-label="left"
-                          >
-                            <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
-                          </ActionButton>
-                          <NumberField
-                            value={addingCount}
-                            width="size-900"
-                            aria-label="number-field"
-                            UNSAFE_style={{ marginLeft: "16px" }}
-                            onChange={(newValue) => setAddingCount(newValue)}
-                          />
-                        </Flex>
+                          <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
+                        </ActionButton>
+                        <ActionButton
+                          isQuiet
+                          aria-label="left"
+                        >
+                          <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
+                        </ActionButton>
+                        <NumberField
+                          value={addingCount}
+                          width="size-900"
+                          aria-label="number-field"
+                          UNSAFE_style={{ marginLeft: "16px" }}
+                          onChange={(newValue) => setAddingCount(newValue)}
+                        />
                       </Flex>
                     </th>
                     <th>
@@ -353,9 +365,9 @@ const App = () => {
                                 aria-label="left"
                               >
                                 {expandedRows.includes(rowIndex) ? (
-                                  <ChevronDown />
-                                ) : (
                                   <ChevronUp />
+                                ) : (
+                                  <ChevronDown />
                                 )}
                               </ActionButton>
                               <Flex
@@ -370,17 +382,19 @@ const App = () => {
                                   {row["Job ID"]}
                                 </Text>
                               </Flex>
-                              <Flex
-                                direction="column"
-                                alignItems="start"
-                              >
-                                <Text UNSAFE_className="job-name">
-                                  {row.Classification}
-                                </Text>
-                                <Text UNSAFE_className="job-id">
-                                  {row["Agreement Name"]}
-                                </Text>
-                              </Flex>
+                            </Flex>
+                          </td>
+                          <td>
+                            <Flex
+                              direction="column"
+                              alignItems="start"
+                            >
+                              <Text UNSAFE_className="job-name">
+                                {row.Classification}
+                              </Text>
+                              <Text UNSAFE_className="job-id">
+                                {row["Agreement Name"]}
+                              </Text>
                             </Flex>
                           </td>
                           {expandedRows.includes(rowIndex) ? (
@@ -519,48 +533,27 @@ const App = () => {
                                 direction="row"
                                 gap="size-100"
                               >
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
-                                <TextField
-                                  aria-label="m-field"
-                                  UNSAFE_style={{
-                                    width: "50px",
-                                  }}
-                                />
+                                {days.map((dayKey) => (
+                                  <TextField
+                                    aria-label="m-field"
+                                    key={dayKey}
+                                    UNSAFE_style={{
+                                      width: "50px",
+                                    }}
+                                    inputMode="numeric"
+                                    type="number"
+                                    value={row.values.st[dayKey]}
+                                    onChange={(value) =>
+                                      handleInputChange(
+                                        "st",
+                                        dayKey,
+                                        value,
+                                        index,
+                                        rowIndex
+                                      )
+                                    }
+                                  />
+                                ))}
                               </Flex>
                             </td>
                           )}
@@ -583,6 +576,7 @@ const App = () => {
                                 isDisabled
                                 aria-label="m-field"
                                 UNSAFE_style={{ width: "50px" }}
+                                value={sumsData[rowIndex].st || ""}
                               />
                             </td>
                           )}
@@ -599,6 +593,10 @@ const App = () => {
                                 isDisabled
                                 aria-label="row-sum"
                                 UNSAFE_style={{ width: "100px" }}
+                                value={new Intl.NumberFormat("en-US", {
+                                  style: "currency",
+                                  currency: "USD",
+                                }).format(wage[rowIndex].st)}
                               />
                             </td>
                           )}
@@ -610,7 +608,9 @@ const App = () => {
                                 const crrValue = row.values[valueKey];
                                 return (
                                   <tr
-                                    className="secondary-row"
+                                    className={`secondary-row ${
+                                      valueKey === "dt" ? "final" : ""
+                                    }`}
                                     key={valueIndex}
                                   >
                                     {valueIndex === 0 ? (
@@ -649,6 +649,7 @@ const App = () => {
                                     ) : (
                                       <td />
                                     )}
+                                    <td />
                                     <td style={{ textAlign: "center" }}>
                                       <Text UNSAFE_className="secondary-row-time">
                                         {valueKey.toUpperCase()}
