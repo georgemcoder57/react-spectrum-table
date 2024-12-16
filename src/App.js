@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import {
   ActionButton,
   Flex,
@@ -13,12 +13,12 @@ import {
 import "./App.scss";
 
 import ChevronDown from "@spectrum-icons/workflow/ChevronDown";
-import ChevronUp from "@spectrum-icons/workflow/ChevronUp";
+import ChevronRight from "@spectrum-icons/workflow/ChevronRight";
 import Flag from "@spectrum-icons/workflow/Flag";
 import { sampleData } from "./data";
 import ChevronLeft from "@spectrum-icons/workflow/ChevronLeft";
-import ChevronRight from "@spectrum-icons/workflow/ChevronRight";
 import Comment from "@spectrum-icons/workflow/Comment";
+import Add from "@spectrum-icons/workflow/Add";
 
 const days = ["m", "tu", "w", "th", "f", "sa", "su"];
 
@@ -68,7 +68,7 @@ const App = () => {
     valueIndex,
     value,
     parentIndex,
-    rowIndex,
+    rowIndex
   ) => {
     setTableData((prevData) =>
       prevData.map((item, index) =>
@@ -87,21 +87,21 @@ const App = () => {
                         },
                       },
                     }
-                  : child,
+                  : child
               ),
             }
-          : item,
-      ),
+          : item
+      )
     );
   };
   const toggleRow = (index) => {
     setExpandedRows((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
   const handleExpandPanel = (isExpanded, index) => {
     setExpandedPanel((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
 
@@ -127,7 +127,10 @@ const App = () => {
                 justifyContent="space-between"
                 UNSAFE_style={{ width: "100%" }}
               >
-                <Flex direction="column" UNSAFE_style={{ paddingLeft: "10px" }}>
+                <Flex
+                  direction="column"
+                  UNSAFE_style={{ paddingLeft: "10px" }}
+                >
                   <Text
                     UNSAFE_style={{
                       fontSize: "12px",
@@ -137,7 +140,10 @@ const App = () => {
                   >
                     {data["Union Local"]}
                   </Text>
-                  <Flex direction="row" gap="size-100">
+                  <Flex
+                    direction="row"
+                    gap="size-100"
+                  >
                     <Text
                       UNSAFE_style={{
                         fontSize: "16px",
@@ -180,7 +186,10 @@ const App = () => {
                     3 classifications
                   </Text>
                 </Flex>
-                <Flex direction="column" alignItems="end">
+                <Flex
+                  direction="column"
+                  alignItems="end"
+                >
                   <Text
                     UNSAFE_style={{
                       fontSize: "12px",
@@ -232,7 +241,10 @@ const App = () => {
                 <thead style={{ borderBottom: "1px solid #ACAFFF" }}>
                   <tr className="summary-row">
                     <th>
-                      <Flex direction="row" alignItems="center">
+                      <Flex
+                        direction="row"
+                        alignItems="center"
+                      >
                         <ChevronLeft
                           size="S"
                           UNSAFE_style={{ fill: "#00635f", padding: 0 }}
@@ -258,20 +270,47 @@ const App = () => {
                       </Flex>
                     </th>
                     <th>
-                      <Flex direction="row" alignItems="center">
-                        <ActionButton isQuiet aria-label="left">
+                      <Flex
+                        direction="row"
+                        alignItems="center"
+                      >
+                        <ActionButton
+                          isQuiet
+                          aria-label="left"
+                        >
                           <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
                         </ActionButton>
-                        <ActionButton isQuiet aria-label="left">
+                        <ActionButton
+                          isQuiet
+                          aria-label="left"
+                        >
                           <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
                         </ActionButton>
-                        <NumberField
-                          value={addingCount}
-                          width="size-900"
-                          aria-label="number-field"
+                        <Flex
+                          direction="row"
+                          alignItems="center"
+                          justifyContent="start"
                           UNSAFE_style={{ marginLeft: "16px" }}
-                          onChange={(newValue) => setAddingCount(newValue)}
-                        />
+                        >
+                          <TextField
+                            value={addingCount}
+                            aria-label="number-field"
+                            width="size-600"
+                            onChange={(newValue) => setAddingCount(newValue)}
+                            UNSAFE_className="custom-adding-count"
+                          />
+                          <ActionButton
+                            aria-labe="icon only"
+                            onPress={() => setAddingCount((prev) => prev + 1)}
+                            UNSAFE_style={{
+                              borderTopLeftRadius: "0px",
+                              borderBottomLeftRadius: "0px",
+                              borderLeft: "0px",
+                            }}
+                          >
+                            <Add />
+                          </ActionButton>
+                        </Flex>
                       </Flex>
                     </th>
                     <th>
@@ -280,9 +319,16 @@ const App = () => {
                       ></div>
                     </th>
                     <th className="week-title">
-                      <Flex direction="row" gap="size-100">
+                      <Flex
+                        direction="row"
+                        gap="size-100"
+                      >
                         {days.map((day, dayIndex) => (
-                          <Flex key={day} direction="column" alignItems="start">
+                          <Flex
+                            key={day}
+                            direction="column"
+                            alignItems="start"
+                          >
                             <div className="week-title-value">
                               <span className="bold">{day}</span>
                               {`${15 + dayIndex}th`}
@@ -327,7 +373,10 @@ const App = () => {
                       <React.Fragment key={rowIndex}>
                         <tr className="primary-row">
                           <td>
-                            <Flex direction="row" alignItems="start">
+                            <Flex
+                              direction="row"
+                              alignItems="start"
+                            >
                               <ActionButton
                                 isQuiet
                                 onPress={() => toggleRow(rowIndex)}
@@ -354,7 +403,10 @@ const App = () => {
                             </Flex>
                           </td>
                           <td>
-                            <Flex direction="column" alignItems="start">
+                            <Flex
+                              direction="column"
+                              alignItems="start"
+                            >
                               <Text UNSAFE_className="job-name">
                                 {row.Classification}
                               </Text>
@@ -408,7 +460,10 @@ const App = () => {
                                   height="18px"
                                   style={{ marginRight: "8px" }}
                                 />
-                                <Flex direction="row" alignItems="end">
+                                <Flex
+                                  direction="row"
+                                  alignItems="end"
+                                >
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -433,7 +488,10 @@ const App = () => {
                                     $848.12
                                   </Text>
                                 </Flex>
-                                <Flex direction="row" alignItems="end">
+                                <Flex
+                                  direction="row"
+                                  alignItems="end"
+                                >
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -458,7 +516,10 @@ const App = () => {
                                     ($234.21)
                                   </Text>
                                 </Flex>
-                                <Flex direction="row" alignItems="end">
+                                <Flex
+                                  direction="row"
+                                  alignItems="end"
+                                >
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -486,7 +547,10 @@ const App = () => {
                             </td>
                           ) : (
                             <td>
-                              <Flex direction="row" gap="size-100">
+                              <Flex
+                                direction="row"
+                                gap="size-100"
+                              >
                                 {days.map((dayKey) => (
                                   <TextField
                                     aria-label="m-field"
@@ -503,7 +567,7 @@ const App = () => {
                                         dayKey,
                                         value,
                                         index,
-                                        rowIndex,
+                                        rowIndex
                                       )
                                     }
                                   />
@@ -568,29 +632,39 @@ const App = () => {
                                     key={valueIndex}
                                   >
                                     {valueIndex === 0 ? (
-                                      <td
-                                        style={{
-                                          paddingLeft: "30px",
-                                          borderTop: "1px solid #008C87",
-                                        }}
-                                      >
-                                        <Flex direction="row">
+                                      <React.Fragment>
+                                        <td
+                                          style={{
+                                            paddingLeft: "30px",
+                                            borderTop: "1px solid #008C87",
+                                          }}
+                                        >
+                                          <Flex direction="row">
+                                            <Flex
+                                              direction="row"
+                                              UNSAFE_style={{}}
+                                            >
+                                              <Text UNSAFE_className="earning-code">
+                                                EC
+                                              </Text>
+                                              <Text UNSAFE_className="earning-code-value">
+                                                {row.EarningCode}
+                                              </Text>
+                                            </Flex>
+                                          </Flex>
+                                        </td>
+                                        <td
+                                          style={{
+                                            borderTop: "1px solid #008C87",
+                                          }}
+                                        >
                                           <Flex
                                             direction="row"
                                             UNSAFE_style={{
-                                              paddingRight: "16px",
-                                              borderRight: "1px solid #008C87",
-                                              marginRight: "8px",
+                                              paddingLeft: "16px",
+                                              borderLeft: "1px solid #008C87",
                                             }}
                                           >
-                                            <Text UNSAFE_className="earning-code">
-                                              EC
-                                            </Text>
-                                            <Text UNSAFE_className="earning-code-value">
-                                              {row.EarningCode}
-                                            </Text>
-                                          </Flex>
-                                          <Flex direction="row">
                                             <Text UNSAFE_className="earning-code">
                                               CC
                                             </Text>
@@ -598,19 +672,24 @@ const App = () => {
                                               {row.CostCenter}
                                             </Text>
                                           </Flex>
-                                        </Flex>
-                                      </td>
+                                        </td>
+                                      </React.Fragment>
                                     ) : (
-                                      <td />
+                                      <React.Fragment>
+                                        <td />
+                                        <td />
+                                      </React.Fragment>
                                     )}
-                                    <td />
                                     <td style={{ textAlign: "center" }}>
                                       <Text UNSAFE_className="secondary-row-time">
                                         {valueKey.toUpperCase()}
                                       </Text>
                                     </td>
                                     <td>
-                                      <Flex direction="row" gap="size-100">
+                                      <Flex
+                                        direction="row"
+                                        gap="size-100"
+                                      >
                                         {days.map((dayKey) => (
                                           <TextField
                                             aria-label="m-field"
@@ -627,7 +706,7 @@ const App = () => {
                                                 dayKey,
                                                 value,
                                                 index,
-                                                rowIndex,
+                                                rowIndex
                                               )
                                             }
                                           />
@@ -657,7 +736,7 @@ const App = () => {
                                     </td>
                                   </tr>
                                 );
-                              },
+                              }
                             )}
                           </React.Fragment>
                         )}
