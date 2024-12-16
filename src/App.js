@@ -334,9 +334,9 @@ const App = () => {
                                 aria-label="left"
                               >
                                 {expandedRows.includes(rowIndex) ? (
-                                  <ChevronUp />
-                                ) : (
                                   <ChevronDown />
+                                ) : (
+                                  <ChevronRight />
                                 )}
                               </ActionButton>
                               <Flex
