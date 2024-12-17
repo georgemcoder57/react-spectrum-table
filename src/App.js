@@ -112,7 +112,19 @@ const App = () => {
           <tr>
             <th></th>
             <th></th>
-            <th></th>
+            <th style={{ textAlign: "center" }}>
+              <Text
+                UNSAFE_style={{
+                  fontSize: "12px",
+                  fontWeight: 400,
+                  lineHeight: "18px",
+                  color: "#464646",
+                  visibility: "hidden",
+                }}
+              >
+                Rate
+              </Text>
+            </th>
             <th>
               <Flex
                 direction="row"
@@ -144,7 +156,7 @@ const App = () => {
                     : "white",
                 }}
               >
-                <td>
+                <td className="accordion-title-first">
                   <Flex
                     direction="row"
                     alignItems="center"
@@ -205,6 +217,7 @@ const App = () => {
                   <Flex
                     direction="row"
                     alignItems="center"
+                    UNSAFE_style={{ paddingRight: "5px" }}
                   >
                     <ActionButton
                       isQuiet
@@ -245,7 +258,19 @@ const App = () => {
                     </Flex>
                   </Flex>
                 </td>
-                <td></td>
+                <td style={{ textAlign: "center" }}>
+                  <Text
+                    UNSAFE_style={{
+                      fontSize: "12px",
+                      fontWeight: 400,
+                      lineHeight: "18px",
+                      color: "#464646",
+                      visibility: "hidden",
+                    }}
+                  >
+                    Rate
+                  </Text>
+                </td>
                 <td>
                   <Flex
                     direction="row"
@@ -349,7 +374,19 @@ const App = () => {
                               </Text>
                             </td>
                           ) : (
-                            <td></td>
+                            <td style={{ textAlign: "center" }}>
+                              <Text
+                                UNSAFE_style={{
+                                  fontSize: "12px",
+                                  fontWeight: 400,
+                                  lineHeight: "18px",
+                                  color: "#464646",
+                                  visibility: "hidden",
+                                }}
+                              >
+                                Rate
+                              </Text>
+                            </td>
                           )}
                           {expandedRows.includes(rowIndex) ? (
                             <td>
