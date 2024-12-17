@@ -51,11 +51,14 @@
 
     .primary-row {
       border-top: 1px solid #acafff;
+      background: #f0fdfb;
       .first-td {
         padding-left: 50px;
       }
     }
 
+    @media screen {
+    }
     .primary-row td {
       padding: 9px 0px;
     }
@@ -87,8 +90,11 @@
       text-align: center;
     }
 
-    .secondary-row td {
-      padding: 6px 0;
+    .secondary-row {
+      background: #f0fdfb;
+      td {
+        padding: 6px 0;
+      }
     }
 
     .secondary-row.final td {
