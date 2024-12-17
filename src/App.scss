@@ -1,123 +1,98 @@
-.employee-table {
-  padding-left: 70px !important;
-  background: #f0fdfb;
-
-  table {
+.table-container {
+  .top-header {
+    background: #f0fdfb;
+    th {
+      padding: 5px 0px;
+      text-align: left;
+    }
+  }
+  table.top-table {
     width: 100%;
     border-collapse: collapse;
+  }
 
-    .summary-row {
-      th {
-        vertical-align: bottom;
-        text-align: left;
-        padding-bottom: 16px;
-      }
+  .week-title-value {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: #008c87;
+    min-width: 50px;
+    text-align: left;
 
-      .custom-adding-count input {
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-      }
+    span {
+      font-weight: 700;
+      color: #00635f;
+      text-transform: capitalize;
+    }
+  }
 
-      .next-btn {
-        fill: #00635f;
-      }
+  tbody {
+    .job-name {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      color: #222222;
+    }
 
-      .summary-week-name {
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 150%;
-        color: #00635f;
-        font-variant: all-small-caps;
-      }
+    .job-id {
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      color: #222222;
+    }
 
-      .summary-week-number {
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-        color: #008c87;
-      }
+    tr th {
+      padding-top: 7.5px;
+      padding-bottom: 9px;
+    }
 
-      .week-title .week-title-value {
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 100%;
-        color: #008c87;
-
-        span {
-          font-weight: 700;
-          color: #00635f;
-          text-transform: capitalize;
-        }
+    .primary-row {
+      border-top: 1px solid #acafff;
+      .first-td {
+        padding-left: 50px;
       }
     }
 
-    tbody {
-      .job-name {
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-        color: #222222;
-      }
+    .primary-row td {
+      padding: 9px 0px;
+    }
 
-      .job-id {
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-        color: #222222;
-      }
+    .earning-code {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      font-variant: all-small-caps;
+      color: #007772;
+    }
 
-      tr th {
-        padding-top: 7.5px;
-        padding-bottom: 9px;
-      }
+    .earning-code-value {
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      color: #464646;
+    }
 
-      .primary-row {
-        border-top: 1px solid #acafff;
-      }
+    .secondary-row-time {
+      width: 100%;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%;
+      color: #b1b1b1;
+      text-align: center;
+    }
 
-      .primary-row td {
-        padding: 9px 0px;
-      }
+    .secondary-row td {
+      padding: 6px 0;
+    }
 
-      .earning-code {
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        font-variant: all-small-caps;
-        color: #007772;
-      }
-
-      .earning-code-value {
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-        color: #464646;
-      }
-
-      .secondary-row-time {
-        width: 100%;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 150%;
-        color: #b1b1b1;
-        text-align: center;
-      }
-
-      .secondary-row td {
-        padding: 6px 0;
-      }
-
-      .secondary-row.final td {
-        padding-bottom: 33px;
-      }
+    .secondary-row.final td {
+      padding-bottom: 33px;
     }
   }
 }

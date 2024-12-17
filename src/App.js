@@ -99,7 +99,7 @@ const App = () => {
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
-  const handleExpandPanel = (isExpanded, index) => {
+  const handleParentPanelExpand = (index) => {
     setExpandedPanel((prev) =>
       prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
@@ -107,272 +107,192 @@ const App = () => {
 
   return (
     <div className="table-container">
-      <Accordion allowsMultipleExpanded>
-        {tableData.map((data, index) => (
-          <Disclosure
-            id={index}
-            key={index}
-            onExpandedChange={(isExpanded) =>
-              handleExpandPanel(isExpanded, index)
-            }
-          >
-            <DisclosureTitle
-              UNSAFE_style={{
-                background: expandedPanel.includes(index) ? "#F0FDFB" : "white",
-              }}
-            >
+      <table className="top-table">
+        <thead className="top-header">
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
               <Flex
                 direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                UNSAFE_style={{ width: "100%" }}
+                gap="size-100"
               >
-                <Flex
-                  direction="column"
-                  UNSAFE_style={{ paddingLeft: "10px" }}
-                >
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#909090",
-                    }}
+                {days.map((day, dayIndex) => (
+                  <div
+                    className="week-title-value"
+                    key={day}
                   >
-                    {data["Union Local"]}
-                  </Text>
+                    <span className="bold">{day}</span>
+                    {`${15 + dayIndex}th`}
+                  </div>
+                ))}
+              </Flex>
+            </th>
+            <th>TIME</th>
+            <th>WAGES</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableData.map((data, index) => (
+            <React.Fragment key={index}>
+              <tr
+                className="accordion-title"
+                style={{
+                  background: expandedPanel.includes(index)
+                    ? "#F0FDFB"
+                    : "white",
+                }}
+              >
+                <td>
                   <Flex
                     direction="row"
-                    gap="size-100"
+                    alignItems="center"
+                    justifyContent="start"
                   >
-                    <Text
-                      UNSAFE_style={{
-                        fontSize: "16px",
-                        lineHeight: "24px",
-                        fontWeight: 600,
-                      }}
+                    <ActionButton
+                      isQuiet
+                      onPress={() => handleParentPanelExpand(index)}
+                      aria-label="left"
                     >
-                      {data["Employee Name"]}
-                    </Text>
-                    <Text
-                      UNSAFE_style={{
-                        fontSize: "16px",
-                        lineHeight: "24px",
-                        fontWeight: 600,
-                        color: "#6D6D6D",
-                      }}
+                      {expandedPanel.includes(index) ? (
+                        <ChevronDown />
+                      ) : (
+                        <ChevronRight />
+                      )}
+                    </ActionButton>
+                    <Flex
+                      direction="column"
+                      UNSAFE_style={{ paddingLeft: "10px" }}
                     >
-                      ({data["Employee ID"]})
-                    </Text>
-                  </Flex>
-                </Flex>
-                <Flex direction="column">
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#222222",
-                    }}
-                  >
-                    2 JOBS
-                  </Text>
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#222222",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    3 classifications
-                  </Text>
-                </Flex>
-                <Flex
-                  direction="column"
-                  alignItems="end"
-                >
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#909090",
-                    }}
-                  >
-                    TOTAL RPT HRS
-                  </Text>
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      color: "black",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {totalSum}
-                  </Text>
-                </Flex>
-                <Flex direction="column">
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#909090",
-                    }}
-                  >
-                    GROSS WAGES
-                  </Text>
-                  <Text
-                    UNSAFE_style={{
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      color: "black",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {new Intl.NumberFormat("en-US", {
-                      style: "currency",
-                      currency: "USD",
-                    }).format(totalWage)}
-                  </Text>
-                </Flex>
-              </Flex>
-            </DisclosureTitle>
-            <DisclosurePanel UNSAFE_className="employee-table">
-              <table>
-                <thead style={{ borderBottom: "1px solid #ACAFFF" }}>
-                  <tr className="summary-row">
-                    <th>
-                      <Flex
-                        direction="row"
-                        alignItems="center"
+                      <Text
+                        UNSAFE_style={{
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "#909090",
+                        }}
                       >
-                        <ChevronLeft
-                          size="S"
-                          UNSAFE_style={{ fill: "#00635f", padding: 0 }}
-                        />
-                        <ChevronRight
-                          size="S"
-                          UNSAFE_style={{
-                            fill: "#00635f",
-                            marginRight: "16px",
-                            marginLeft: "7px",
-                          }}
-                        />
-                        <Flex
-                          direction="row"
-                          alignItems="end"
-                          justifyContent="start"
-                        >
-                          <Text UNSAFE_className="summary-week-name">WE</Text>
-                          <Text UNSAFE_className="summary-week-number">
-                            21st
-                          </Text>
-                        </Flex>
-                      </Flex>
-                    </th>
-                    <th>
-                      <Flex
-                        direction="row"
-                        alignItems="center"
-                      >
-                        <ActionButton
-                          isQuiet
-                          aria-label="left"
-                        >
-                          <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
-                        </ActionButton>
-                        <ActionButton
-                          isQuiet
-                          aria-label="left"
-                        >
-                          <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
-                        </ActionButton>
-                        <Flex
-                          direction="row"
-                          alignItems="center"
-                          justifyContent="start"
-                          UNSAFE_style={{ marginLeft: "16px" }}
-                        >
-                          <TextField
-                            value={addingCount}
-                            aria-label="number-field"
-                            width="size-600"
-                            onChange={(newValue) => setAddingCount(newValue)}
-                            UNSAFE_className="custom-adding-count"
-                          />
-                          <ActionButton
-                            aria-labe="icon only"
-                            onPress={() => setAddingCount((prev) => prev + 1)}
-                            UNSAFE_style={{
-                              borderTopLeftRadius: "0px",
-                              borderBottomLeftRadius: "0px",
-                              borderLeft: "0px",
-                            }}
-                          >
-                            <Add />
-                          </ActionButton>
-                        </Flex>
-                      </Flex>
-                    </th>
-                    <th>
-                      <div
-                        style={{ width: "53px", visibility: "hidden" }}
-                      ></div>
-                    </th>
-                    <th className="week-title">
+                        {data["Union Local"]}
+                      </Text>
                       <Flex
                         direction="row"
                         gap="size-100"
                       >
-                        {days.map((day, dayIndex) => (
-                          <Flex
-                            key={day}
-                            direction="column"
-                            alignItems="start"
-                          >
-                            <div className="week-title-value">
-                              <span className="bold">{day}</span>
-                              {`${15 + dayIndex}th`}
-                            </div>
-                            <TextField
-                              isDisabled
-                              aria-label="m-field"
-                              UNSAFE_style={{
-                                width: "50px",
-                                marginTop: "12px",
-                              }}
-                              value={daySum[day]}
-                            />
-                          </Flex>
-                        ))}
+                        <Text
+                          UNSAFE_style={{
+                            fontSize: "16px",
+                            lineHeight: "24px",
+                            fontWeight: 600,
+                          }}
+                        >
+                          {data["Employee Name"]}
+                        </Text>
+                        <Text
+                          UNSAFE_style={{
+                            fontSize: "16px",
+                            lineHeight: "24px",
+                            fontWeight: 600,
+                            color: "#6D6D6D",
+                          }}
+                        >
+                          ({data["Employee ID"]})
+                        </Text>
                       </Flex>
-                    </th>
-                    <th>
+                    </Flex>
+                  </Flex>
+                </td>
+                <td>
+                  <Flex
+                    direction="row"
+                    alignItems="center"
+                  >
+                    <ActionButton
+                      isQuiet
+                      aria-label="left"
+                    >
+                      <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
+                    </ActionButton>
+                    <ActionButton
+                      isQuiet
+                      aria-label="left"
+                    >
+                      <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
+                    </ActionButton>
+                    <Flex
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="start"
+                      UNSAFE_style={{ marginLeft: "16px" }}
+                    >
                       <TextField
-                        isDisabled
-                        aria-label="m-field"
-                        UNSAFE_style={{ width: "50px" }}
-                        value={totalSum}
+                        value={addingCount}
+                        aria-label="number-field"
+                        width="size-600"
+                        onChange={(newValue) => setAddingCount(newValue)}
+                        UNSAFE_className="custom-adding-count"
                       />
-                    </th>
-                    <th>
+                      <ActionButton
+                        aria-labe="icon only"
+                        onPress={() => setAddingCount((prev) => prev + 1)}
+                        UNSAFE_style={{
+                          borderTopLeftRadius: "0px",
+                          borderBottomLeftRadius: "0px",
+                          borderLeft: "0px",
+                        }}
+                      >
+                        <Add />
+                      </ActionButton>
+                    </Flex>
+                  </Flex>
+                </td>
+                <td></td>
+                <td>
+                  <Flex
+                    direction="row"
+                    gap="size-100"
+                  >
+                    {days.map((dayKey) => (
                       <TextField
-                        isDisabled
                         aria-label="m-field"
-                        UNSAFE_style={{ width: "100px" }}
-                        value={new Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        }).format(totalWage)}
+                        key={dayKey}
+                        UNSAFE_style={{
+                          width: "50px",
+                        }}
+                        inputMode="numeric"
+                        type="number"
+                        isDisabled
+                        value={daySum[dayKey]}
                       />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
+                    ))}
+                  </Flex>
+                </td>
+                <td>
+                  <TextField
+                    isDisabled
+                    aria-label="m-field"
+                    UNSAFE_style={{ width: "50px" }}
+                    value={totalSum}
+                  />
+                </td>
+                <td>
+                  <TextField
+                    isDisabled
+                    aria-label="m-field"
+                    UNSAFE_style={{ width: "100px" }}
+                    value={new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(totalWage)}
+                  />
+                </td>
+              </tr>
+              {expandedPanel.includes(index) && (
+                <React.Fragment>
                   {data.rows &&
                     data.rows.map((row, rowIndex) => (
                       <React.Fragment key={rowIndex}>
                         <tr className="primary-row">
-                          <td>
+                          <td className="first-td">
                             <Flex
                               direction="row"
                               alignItems="start"
@@ -560,15 +480,11 @@ const App = () => {
                                     }}
                                     inputMode="numeric"
                                     type="number"
-                                    value={row.values.st[dayKey]}
-                                    onChange={(value) =>
-                                      handleInputChange(
-                                        "st",
-                                        dayKey,
-                                        value,
-                                        index,
-                                        rowIndex
-                                      )
+                                    isDisabled
+                                    value={
+                                      row.values.st[dayKey] +
+                                      row.values.dt[dayKey] +
+                                      row.values.ot[dayKey]
                                     }
                                   />
                                 ))}
@@ -594,7 +510,11 @@ const App = () => {
                                 isDisabled
                                 aria-label="m-field"
                                 UNSAFE_style={{ width: "50px" }}
-                                value={sumsData[rowIndex].st || ""}
+                                value={
+                                  sumsData[rowIndex].st +
+                                    sumsData[rowIndex].dt +
+                                    sumsData[rowIndex].ot || ""
+                                }
                               />
                             </td>
                           )}
@@ -603,6 +523,7 @@ const App = () => {
                               <TextField
                                 aria-label="row-sum"
                                 UNSAFE_style={{ width: "100px" }}
+                                value=""
                               />
                             </td>
                           ) : (
@@ -614,7 +535,11 @@ const App = () => {
                                 value={new Intl.NumberFormat("en-US", {
                                   style: "currency",
                                   currency: "USD",
-                                }).format(wage[rowIndex].st)}
+                                }).format(
+                                  wage[rowIndex].st +
+                                    wage[rowIndex].dt +
+                                    wage[rowIndex].ot
+                                )}
                               />
                             </td>
                           )}
@@ -742,12 +667,12 @@ const App = () => {
                         )}
                       </React.Fragment>
                     ))}
-                </tbody>
-              </table>
-            </DisclosurePanel>
-          </Disclosure>
-        ))}
-      </Accordion>
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
