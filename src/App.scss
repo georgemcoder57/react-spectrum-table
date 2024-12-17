@@ -1,9 +1,11 @@
 .table-container {
   .top-header {
-    background: #f0fdfb;
+    background: white;
+
     th {
-      padding: 5px 0px;
+      padding: 9px 0px;
       text-align: left;
+      border-bottom: 2px solid #ccc;
     }
   }
   table.top-table {
@@ -11,18 +13,26 @@
     border-collapse: collapse;
   }
 
+  .accordion-title {
+    border-bottom: 1px solid #ccc;
+
+    td {
+      padding: 6px 0;
+    }
+  }
+
   .week-title-value {
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 100%;
-    color: #008c87;
+    color: black;
     min-width: 50px;
     text-align: left;
 
     span {
       font-weight: 700;
-      color: #00635f;
+      color: black;
       text-transform: capitalize;
     }
   }
@@ -52,6 +62,7 @@
     .primary-row {
       border-top: 1px solid #acafff;
       background: #f0fdfb;
+
       .first-td {
         padding-left: 50px;
       }

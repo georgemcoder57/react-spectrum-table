@@ -560,15 +560,17 @@ const App = () => {
                                       <React.Fragment>
                                         <td
                                           style={{
-                                            paddingLeft: "30px",
-                                            borderTop: "1px solid #008C87",
+                                            paddingLeft: "90px",
                                           }}
                                         >
-                                          <Flex direction="row">
-                                            <Flex
-                                              direction="row"
-                                              UNSAFE_style={{}}
-                                            >
+                                          <Flex
+                                            direction="row"
+                                            UNSAFE_style={{
+                                              borderTop: "1px solid #008C87",
+                                              paddingTop: "6px",
+                                            }}
+                                          >
+                                            <Flex direction="row">
                                               <Text UNSAFE_className="earning-code">
                                                 EC
                                               </Text>
@@ -578,16 +580,14 @@ const App = () => {
                                             </Flex>
                                           </Flex>
                                         </td>
-                                        <td
-                                          style={{
-                                            borderTop: "1px solid #008C87",
-                                          }}
-                                        >
+                                        <td>
                                           <Flex
                                             direction="row"
                                             UNSAFE_style={{
                                               paddingLeft: "16px",
                                               borderLeft: "1px solid #008C87",
+                                              borderTop: "1px solid #008C87",
+                                              paddingTop: "6px",
                                             }}
                                           >
                                             <Text UNSAFE_className="earning-code">

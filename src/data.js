@@ -46,10 +46,10 @@ export const sampleData = [
         CostCenter: "1857687-98",
       },
       {
-        "Job Name": "Meining Park",
-        "Job ID": "#56678-B",
-        Classification: "G2-General Building, PS-90",
-        "Agreement Name": "67-Construction",
+        "Job Name": "Meadows Express",
+        "Job ID": "#12875-A",
+        Classification: "G1-General Building, PS-90",
+        "Agreement Name": "123-Construction",
         "Rate (Hourly)": 62.46,
         values: {
           st: {
@@ -81,6 +81,8 @@ export const sampleData = [
           },
         },
         Expenses: 0,
+        EarningCode: "1857687-98",
+        CostCenter: "1857687-98",
       },
     ],
   },
