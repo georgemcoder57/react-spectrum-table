@@ -1,22 +1,11 @@
 import React, { useMemo, useState } from "react";
-import {
-  ActionButton,
-  Flex,
-  NumberField,
-  TextField,
-  Text,
-  Accordion,
-  Disclosure,
-  DisclosureTitle,
-  DisclosurePanel,
-} from "@adobe/react-spectrum";
+import { ActionButton, Flex, TextField, Text } from "@adobe/react-spectrum";
 import "./App.scss";
 
 import ChevronDown from "@spectrum-icons/workflow/ChevronDown";
 import ChevronRight from "@spectrum-icons/workflow/ChevronRight";
 import Flag from "@spectrum-icons/workflow/Flag";
 import { sampleData } from "./data";
-import ChevronLeft from "@spectrum-icons/workflow/ChevronLeft";
 import Comment from "@spectrum-icons/workflow/Comment";
 import Add from "@spectrum-icons/workflow/Add";
 
