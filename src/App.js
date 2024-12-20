@@ -115,15 +115,9 @@ const App = () => {
               </Text>
             </th>
             <th>
-              <Flex
-                direction="row"
-                gap="size-100"
-              >
+              <Flex direction="row" gap="size-100">
                 {days.map((day, dayIndex) => (
-                  <div
-                    className="week-title-value"
-                    key={day}
-                  >
+                  <div className="week-title-value" key={day}>
                     <span className="bold">{day}</span>
                     {`${15 + dayIndex}th`}
                   </div>
@@ -175,10 +169,7 @@ const App = () => {
                       >
                         {data["Union Local"]}
                       </Text>
-                      <Flex
-                        direction="row"
-                        gap="size-100"
-                      >
+                      <Flex direction="row" gap="size-100">
                         <Text
                           UNSAFE_style={{
                             fontSize: "16px",
@@ -208,16 +199,10 @@ const App = () => {
                     alignItems="center"
                     UNSAFE_style={{ paddingRight: "5px" }}
                   >
-                    <ActionButton
-                      isQuiet
-                      aria-label="left"
-                    >
+                    <ActionButton isQuiet aria-label="left">
                       <Flag UNSAFE_style={{ fill: "#B1B1B1" }} />
                     </ActionButton>
-                    <ActionButton
-                      isQuiet
-                      aria-label="left"
-                    >
+                    <ActionButton isQuiet aria-label="left">
                       <Comment UNSAFE_style={{ fill: "#B1B1B1" }} />
                     </ActionButton>
                     <Flex
@@ -261,10 +246,7 @@ const App = () => {
                   </Text>
                 </td>
                 <td>
-                  <Flex
-                    direction="row"
-                    gap="size-100"
-                  >
+                  <Flex direction="row" gap="size-100">
                     {days.map((dayKey) => (
                       <TextField
                         aria-label="m-field"
@@ -307,10 +289,7 @@ const App = () => {
                       <React.Fragment key={rowIndex}>
                         <tr className="primary-row">
                           <td className="first-td">
-                            <Flex
-                              direction="row"
-                              alignItems="start"
-                            >
+                            <Flex direction="row" alignItems="start">
                               <ActionButton
                                 isQuiet
                                 onPress={() => toggleRow(rowIndex)}
@@ -337,10 +316,7 @@ const App = () => {
                             </Flex>
                           </td>
                           <td>
-                            <Flex
-                              direction="column"
-                              alignItems="start"
-                            >
+                            <Flex direction="column" alignItems="start">
                               <Text UNSAFE_className="job-name">
                                 {row.Classification}
                               </Text>
@@ -393,23 +369,20 @@ const App = () => {
                                   }}
                                 />
                                 <img
-                                  src="/assets/img/effect.svg"
+                                  src={`${process.env.PUBLIC_URL}/assets/img/effect.svg`}
                                   alt=""
                                   width="14px"
                                   height="14px"
                                   style={{ marginRight: "32px" }}
                                 />
                                 <img
-                                  src="/assets/img/segmentation.svg"
+                                  src={`${process.env.PUBLIC_URL}/assets/img/segmentation.svg`}
                                   alt=""
                                   width="18px"
                                   height="18px"
                                   style={{ marginRight: "8px" }}
                                 />
-                                <Flex
-                                  direction="row"
-                                  alignItems="end"
-                                >
+                                <Flex direction="row" alignItems="end">
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -434,10 +407,7 @@ const App = () => {
                                     $848.12
                                   </Text>
                                 </Flex>
-                                <Flex
-                                  direction="row"
-                                  alignItems="end"
-                                >
+                                <Flex direction="row" alignItems="end">
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -462,10 +432,7 @@ const App = () => {
                                     ($234.21)
                                   </Text>
                                 </Flex>
-                                <Flex
-                                  direction="row"
-                                  alignItems="end"
-                                >
+                                <Flex direction="row" alignItems="end">
                                   <Text
                                     UNSAFE_style={{
                                       fontSize: "14px",
@@ -493,10 +460,7 @@ const App = () => {
                             </td>
                           ) : (
                             <td>
-                              <Flex
-                                direction="row"
-                                gap="size-100"
-                              >
+                              <Flex direction="row" gap="size-100">
                                 {days.map((dayKey) => (
                                   <TextField
                                     aria-label="m-field"
@@ -637,10 +601,7 @@ const App = () => {
                                       </Text>
                                     </td>
                                     <td>
-                                      <Flex
-                                        direction="row"
-                                        gap="size-100"
-                                      >
+                                      <Flex direction="row" gap="size-100">
                                         {days.map((dayKey) => (
                                           <TextField
                                             aria-label="m-field"
